@@ -17,7 +17,8 @@ setup_dirs <- function(site_dir) {
     "DAP/MS/PANELS",
     "DAP/MS/MASKS",
     "CSV",
-    "CSV/Corrected_values"
+    "CSV/Corrected_values",
+    "PLOTS"
   )
   # Use glue to dynamically build the full paths for these directories.
   targ_dirs <- unlist(lapply(targ_dirs, function(x) glue::glue("{site_dir}/{x}")))

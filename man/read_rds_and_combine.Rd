@@ -4,11 +4,9 @@
 \alias{read_rds_and_combine}
 \title{Combine RDS Files Into a Single DataFrame}
 \usage{
-read_rds_and_combine(dir, site_dir)
+read_rds_and_combine(site_dir)
 }
 \arguments{
-\item{dir}{The directory where the RDS files are located.}
-
 \item{site_dir}{The directory where the image files and rds are located.}
 }
 \value{

@@ -8,7 +8,9 @@
 #' @return A ggplot object.
 #'
 #' @examples
+#' \dontrun{
 #' plot_sun_sensor_angles(xmp_all_ssa)
+#' }
 plot_sun_sensor_angles <- function(df) {
 
   # Filter data and plot

@@ -3,6 +3,9 @@
 \name{read_exif_and_save}
 \alias{read_exif_and_save}
 \title{Read EXIF data and save it}
+\usage{
+read_exif_and_save(site_dir, parallel = FALSE, cores = 2)
+}
 \arguments{
 \item{site_dir}{The directory where the site's data is located.}
 

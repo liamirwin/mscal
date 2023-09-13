@@ -6,7 +6,9 @@
 #' @param site_dir The directory path where the site-specific data is stored.
 #' @return NULL. The function updates the EXIF data in place.
 #' @examples
+#' \dontrun{
 #' update_exif_data("C:/path/to/site_dir")
+#' }
 #' @export
 update_exif_data <- function(site_dir) {
   # Construct the full path to the corrected values file

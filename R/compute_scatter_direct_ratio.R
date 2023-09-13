@@ -9,7 +9,9 @@
 #' @return A data frame containing computed values and models.
 #'
 #' @examples
+#' \dontrun{
 #' compute_scatter_direct_ratio("your_directory_here", r_squared_threshold = 0.4, rolling_window = 30)
+#' }
 compute_scatter_direct_ratio <- function(site_dir, r_squared_threshold = 0.4, rolling_window = 30) {
 
   tictoc::tic()

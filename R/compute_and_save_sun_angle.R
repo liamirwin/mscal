@@ -8,7 +8,9 @@
 #' @return None. This function saves the computed data as an RDS file.
 #'
 #' @examples
+#' \dontrun{
 #' compute_and_save_sun_angle("your_directory_here")
+#' }
 compute_and_save_sun_angle <- function(site_dir) {
   # Read the XMP data
   xmp_data <- read_rds(glue::glue("{site_dir}\\CSV\\Corrected_values\\XMP_all.rds"))

@@ -17,16 +17,16 @@ compute_scatter_direct_ratio <- function(site_dir, r_squared_threshold = 0.4, ro
   tictoc::tic()
 
   # Read the XMP data with SunSensorAngle
-  xmp_all_ssa <- read_rds(glue::glue("{site_dir}\\CSV\\Corrected_values\\XMP_with_SSA.rds")) %>%
-    mutate(Date = lubridate::ymd_hms(DateTimeOriginal, tz = 'UTC'),
-           subdirectory = str_split_i(Directory, "/", i = 2),
-           panel_flag = if_else(subdirectory == "Panels", 1, 0)) %>%
-    mutate(Yaw_deg = rad2deg(as.numeric(Yaw)),
-           Roll_deg = rad2deg(as.numeric(Roll)),
-           Pitch_deg = rad2deg(as.numeric(Pitch))) %>%
-    group_by(Date, BandName) %>%
-    arrange(Date) %>%
-    mutate(GPSLatitude_plot = scale(as.numeric(GPSLatitude)),
+  xmp_all_ssa <- readRDS(glue::glue("{site_dir}\\CSV\\Corrected_values\\XMP_with_SSA.rds")) %>%
+    dplyr::mutate(Date = lubridate::ymd_hms(DateTimeOriginal, tz = 'UTC'),
+           subdirectory = stringr::str_split_i(Directory, "/", i = 2),
+           panel_flag = dplyr::if_else(subdirectory == "Panels", 1, 0)) %>%
+    dplyr::mutate(Yaw_deg = pracma::rad2deg(as.numeric(Yaw)),
+           Roll_deg = pracma::rad2deg(as.numeric(Roll)),
+           Pitch_deg = pracma::rad2deg(as.numeric(Pitch))) %>%
+    dplyr::group_by(Date, BandName) %>%
+    dplyr::arrange(Date) %>%
+    dplyr::mutate(GPSLatitude_plot = scale(as.numeric(GPSLatitude)),
            GPSLongitude_plot = scale(as.numeric(GPSLongitude)),
            cos_SSA = cos(SunSensorAngle),
            Irradiance = as.numeric(Irradiance),

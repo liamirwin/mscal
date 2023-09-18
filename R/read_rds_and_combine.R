@@ -22,7 +22,7 @@ read_rds_and_combine <- function(site_dir) {
 
     # Construct the RDS file path and read it
     rds_file_path = glue::glue("{site_dir}/CSV/Corrected_values/df_{j}.rds")
-    exif_df = readRDS(rds_file_path)
+    exif_df = read_rds(rds_file_path)
 
     # Combine the data frames
     if (j == 1) {

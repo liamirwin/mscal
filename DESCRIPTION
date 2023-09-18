@@ -13,7 +13,11 @@ Imports:
     furrr,
     ggplot2,
     glue,
+    magrittr,
     progressr,
     tidyfit,
-    viridis
+    viridis,
+    readr,
+    stringr,
+    pracma
 RoxygenNote: 7.2.3

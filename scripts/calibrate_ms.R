@@ -12,7 +12,7 @@ setup_dirs(site_dir)
 
 # Read Exif data from images and save as RDS
 
-read_exif_and_save(site_dir, parallel = TRUE, cores = 4)
+read_exif_and_save(site_dir, parallel = TRUE, cores = 1)
 
 # Merge RDS into one dataframe
 
@@ -59,8 +59,8 @@ xmp_corrected <- compute_corrected_irradiance(xmp_all_ssa = mod_frame, ratios = 
 
 # Plot irradiance values
 
-plot_irradiance()
+plot_irradiance(xmp_corrected)
 
 # Plot geolocation
 
-plot_geolocation()
+plot_geolocation(xmp_corrected)

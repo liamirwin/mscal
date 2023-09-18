@@ -4,14 +4,10 @@
 \alias{read_exif_and_save}
 \title{Read EXIF data and save it}
 \usage{
-read_exif_and_save(site_dir, parallel = FALSE, cores = 2)
+read_exif_and_save(site_dir)
 }
 \arguments{
 \item{site_dir}{The directory where the site's data is located.}
-
-\item{parallel}{Logical flag to run the function in parallel.}
-
-\item{cores}{Number of cores to use for parallel processing.}
 }
 \value{
 Nothing, but saves EXIF data to RDS files.
@@ -21,6 +17,6 @@ Read EXIF data and save it
 }
 \examples{
 \dontrun{
-read_exif_and_save(site_dir = "your_site_directory", parallel = TRUE, cores = 2)
+read_exif_and_save(site_dir = "your_site_directory")
 }
 }

@@ -60,7 +60,7 @@ compute_rolling_regression <- function(site_dir, xmp_all_ssa, lookback_seconds =
            dir_diff_ratio = mean(dir_diff))
 
   # Save the filtered data frame as an RDS file
-  saveRDS(df_to_use, glue::glue("{site_dir}\\CSV\\Corrected_values\\rolling_regression_used.rds"))
+  readr::write_rds(df_to_use, glue::glue("{site_dir}\\CSV\\Corrected_values\\rolling_regression_used.rds"))
 
   # Print a message to indicate the operation's status
   print(glue::glue('Calculated Rolling Regression values for {site_dir}'))

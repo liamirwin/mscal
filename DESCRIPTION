@@ -19,5 +19,8 @@ Imports:
     viridis,
     readr,
     stringr,
-    pracma
+    pracma,
+    foreach,
+    parallel,
+    doParallel
 RoxygenNote: 7.2.3

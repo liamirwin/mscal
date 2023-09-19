@@ -15,8 +15,8 @@ read_exif_and_save <- function(site_dir, num_cores = 1L) {
   tictoc::tic()
 
   # Register parallel backend
-  cl <- makeCluster(num_cores)
-  registerDoParallel(cl)
+  cl <- parallel::makeCluster(num_cores)
+  doParallel::registerDoParallel(cl)
 
   # Initialize an empty dataframe
   df_all = data.frame()
@@ -37,7 +37,7 @@ read_exif_and_save <- function(site_dir, num_cores = 1L) {
 
     exif_df = data.frame()
 
-    exif_df_list <- foreach(i = 1:length(pics), .combine = "rbind", .packages = c("exifr", "dplyr", "glue")) %dopar% {
+    exif_df_list <- foreach::foreach(i = 1:length(pics), .combine = "rbind", .packages = c("exifr", "dplyr", "glue")) %dopar% {
 
       pic = pics[i]
       pic_root = tail(unlist(strsplit(pics_root[i], "Panels/")), n = 1)
@@ -66,7 +66,7 @@ read_exif_and_save <- function(site_dir, num_cores = 1L) {
   print(glue('Read and locally saved EXIF data for all ten bands'))
 
   # Stop the cluster
-  stopCluster(cl)
+  parallel::stopCluster(cl)
 
   tictoc::toc()
 }

@@ -18,8 +18,7 @@ read_rds_and_combine <- function(site_dir) {
   exif_df_all = data.frame()
 
   for (j in 1:10) {
-    # Assume bands are from 1 to 10; adjust if needed
-
+    # Assumes bands are from 1 to 10; adjust if needed
     # Construct the RDS file path and read it
     rds_file_path = glue::glue("{site_dir}/CSV/Corrected_values/df_{j}.rds")
     exif_df = read_rds(rds_file_path)

@@ -12,7 +12,7 @@ setup_dirs(site_dir)
 
 # Read Exif data from images and save as RDS
 
-read_exif_and_save(site_dir, parallel = TRUE, cores = 1)
+read_exif_and_save(site_dir, num_cores = 8L)
 
 # Merge RDS into one dataframe
 

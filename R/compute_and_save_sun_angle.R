@@ -21,10 +21,15 @@ compute_and_save_sun_angle <- function(site_dir) {
   # Compute Sun Sensor Angle
   xmp_with_ssa <- xmp_data %>%
     dplyr::rowwise() %>%
-    dplyr::mutate(SunSensorAngle = compute_sun_angle(SolarElevation, SolarAzimuth, Roll, Pitch, Yaw))
+    dplyr::mutate(SunSensorAngle = compute_sun_angle(SolarElevation,
+                                                     SolarAzimuth,
+                                                     Roll,
+                                                     Pitch,
+                                                     Yaw))
 
   # Save the result as an RDS file
-  readr::write_rds(xmp_with_ssa, glue::glue("{site_dir}\\CSV\\Corrected_values\\XMP_with_SSA.rds"))
+  saveRDS(xmp_with_ssa,
+                   file = glue::glue("{site_dir}\\CSV\\Corrected_values\\XMP_with_SSA.rds"))
 
   print(glue::glue('Computed sun angle and updated RDS files for {site_dir}'))
 

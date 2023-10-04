@@ -16,12 +16,13 @@ plot_sun_sensor_angles <- function(df) {
   # Filter data and plot
   p <- df %>%
     dplyr::filter(BandName == "Blue") %>%  # Identical across bands in a rig, just check one
+    dplyr::select('Date', 'BandName', 'Date2', 'SunSensorAngle') %>%
     dplyr::group_by(Date, BandName) %>%
-    ggplot2::ggplot(aes(x = Date2, y = pracma::rad2deg(SunSensorAngle))) +
+    ggplot2::ggplot(ggplot2::aes(x = Date, y = pracma::rad2deg(SunSensorAngle))) +
     ggplot2::geom_point(color = "red4", alpha = .5) +
+    ggplot2::labs(x = 'Time (UTC)', y = 'Sun Sensor Angle (°)') +
     ggplot2::theme_bw(base_size = 16) +
-    ggplot2::facet_wrap(. ~ Date,
-               scales = "free_x")
+    ggplot2::theme(legend.position = "none")
 
   return(p)
 

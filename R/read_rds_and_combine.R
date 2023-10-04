@@ -14,6 +14,8 @@
 #' @export
 read_rds_and_combine <- function(site_dir) {
 
+  tictoc::tic()
+
   # Initialize empty data frame to store all EXIF data
   exif_df_all = data.frame()
 
@@ -21,7 +23,7 @@ read_rds_and_combine <- function(site_dir) {
     # Assumes bands are from 1 to 10; adjust if needed
     # Construct the RDS file path and read it
     rds_file_path = glue::glue("{site_dir}/CSV/Corrected_values/df_{j}.rds")
-    exif_df = read_rds(rds_file_path)
+    exif_df = readr::read_rds(rds_file_path)
 
     # Combine the data frames
     if (j == 1) {
@@ -34,6 +36,8 @@ read_rds_and_combine <- function(site_dir) {
   saveRDS(exif_df_all, glue::glue("{site_dir}/CSV/Corrected_values/XMP_all.rds"))
 
   print(glue::glue('Read and combine RDS files for {site_dir}'))
+
+  tictoc::toc()
 
   return(exif_df_all)
 }

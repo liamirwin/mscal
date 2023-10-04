@@ -2,7 +2,7 @@
 
 library(mscal)
 
-site_dir <- 'G:/Ontario_2023/MicaSense_Calibration/Block18_NW'
+site_dir <- 'G:/scantiques_roadshow/Block18_2023/Micasense/NorthEast'
 
 
 # Setup Calibration Directories
@@ -22,18 +22,20 @@ rds_df <- read_rds_and_combine(site_dir)
 
 rds_df_sun <- compute_and_save_sun_angle(site_dir)
 
-# Compute scattered direct irradiance ratios
+# Prepare Dataframe For Processing
+xmp_all_ssa <- prepare_xmp_df(site_dir)
 
-xmp_all_ssa <- compute_scatter_direct_ratio(site_dir)
-
-# Plot Sun angles
+# Plot Sun angles - Should range around 30 in summer
 
 plot_sun_sensor_angles(xmp_all_ssa)
-ggsave(filename = glue::glue('{site_dir}/PLOTS/sun_angles.png'), plot = p1)
+
+ggplot2::ggsave(filename = glue::glue('{site_dir}/PLOTS/sun_angles.png'))
 
 # Compute rolling regression
-
-mod_frame <- compute_rolling_regression(site_dir, xmp_all_ssa)
+library(tidyfit)
+library(tidyr)
+library(dplyr)
+mod_frame <- compute_rolling_regression(site_dir, xmp_all_ssa, r_squared_threshold = 0.4, lookback_seconds =  30)
 
 # Plot rolling regression results; check if you're keeping enough models
 

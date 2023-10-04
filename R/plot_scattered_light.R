@@ -22,8 +22,8 @@ plot_scattered_light <- function(df) {
     geom_hline(aes(yintercept = mean_scattered), color = "red4", linewidth = 1) +  # Red line for mean
     scale_y_continuous(breaks = seq(0, 1, .2), limits = c(0,1)) +  # Y-axis scale
     ggnewscale::new_scale_color() +
-    theme_bw(base_size = 16) +  # Theme
-    facet_wrap(. ~ Date, scales = "free")  # Facets
+    theme_bw(base_size = 16) # Theme
+    # facet_wrap(. ~ Date, scales = "free")  # Facets
 
   return(p)
 }

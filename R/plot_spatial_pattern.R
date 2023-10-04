@@ -15,12 +15,12 @@
 plot_spatial_pattern <- function(df) {
 
   p <- df %>%
-    ggplot(aes(x = GPSLongitude, y = GPSLatitude, color = rad2deg(SunSensorAngle))) +
-    geom_point(aes(color = ifelse(is.na(rad2deg(SunSensorAngle)), "grey60", rad2deg(SunSensorAngle)))) +  # Color points based on SunSensorAngle, grey if SunSensorAngle is NA
+    ggplot(aes(x = GPSLongitude, y = GPSLatitude, color = pracma::rad2deg(SunSensorAngle))) +
+    geom_point(aes(color = ifelse(is.na(pracma::rad2deg(SunSensorAngle)), "grey60", pracma::rad2deg(SunSensorAngle)))) +  # Color points based on SunSensorAngle, grey if SunSensorAngle is NA
     geom_point(size = 3) +
     theme_bw() +
-    scale_color_viridis_c() +
-    facet_wrap(. ~ Date, scales = "free")  # Facets by Date
+    scale_color_viridis_c()
+    #facet_wrap(. ~ Date, scales = "free")  # Facets by Date
 
   return(p)
 }
